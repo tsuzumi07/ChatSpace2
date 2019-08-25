@@ -26,7 +26,7 @@ Things you may want to cover:
 ## chat-space DB設計
 ##usersテーブル
 |Column|Type|Options|
-|------|----|-------|
+|------|----|--------|
 |name|string|null:false, index: true|
 |email|reference|null:false, unique:true|
 
