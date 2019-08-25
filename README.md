@@ -27,8 +27,8 @@ Things you may want to cover:
 ##usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null:false, index: true
-|email|reference|null:false, unique:true
+|name|string|null:false, index: true|
+|email|reference|null:false, unique:true|
 
 #Association
 has_many :massages
