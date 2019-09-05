@@ -46,14 +46,15 @@
     .message {
       .upper-message {
         &__user-name {
+          display: flex;
           color: $black;
           font-size: 16px;
           font-weight: bold;
-        }
-        &__date {
-          color: $light_gray;
-          font-size: 12px;
-          padding-left: 10px;
+          &__date {
+            color: $light_gray;
+            font-size: 12px;
+            padding-left: 10px;
+          }
         }
       }
       .lower-message {
