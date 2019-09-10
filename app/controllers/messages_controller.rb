@@ -14,7 +14,7 @@ end
     @message = @group.messages.new(message_params)
     if @message.save
       respond_to do |format|
-        format.html { redirect_to group_messages_path }
+        format.html { redirect_to group_messages_path(@group) }
         format.json
       end
     else
@@ -22,6 +22,7 @@ end
       flash.now[:alert] = 'メッセージを入力してください。'
       render :index
     end
+
   end
 
   private
