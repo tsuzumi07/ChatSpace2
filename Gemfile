@@ -58,6 +58,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'pry-rails'
 gem 'jquery-turbolinks'
+gem 'ruby-vips-2.0.15'
 
 group :production do
   gem 'unicorn', '5.4.1'
