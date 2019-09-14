@@ -33,7 +33,7 @@ $(function() {
 
     $(".chat-group-form__search.clearfix").on("keyup", function() {
       var input = $("#user-search-field.chat-group-form__input").val();
-        
+         
       $.ajax({
         type: 'GET',
         url: '/users/',
@@ -45,8 +45,6 @@ $(function() {
             if(users.length !== 0){
               users.forEach(function(user){
                 appendList(user);
-                var html = searchUser(user);
-                $('#user-search-result').append(html)
               })
             }
             else{
