@@ -23,7 +23,7 @@ $(function() {
       user_list.append(html);
     }
 
-  　function appendNoList(info){
+  function appendNoList(info){
     var html =`<div class="chat-group-form_field.clearfix>'
                 <p class="chat-group-user__name">${ info }</p>
               </div>`
@@ -33,7 +33,8 @@ $(function() {
 
     $(".chat-group-form__search.clearfix").on("keyup", function() {
       var input = $("#user-search-field.chat-group-form__input").val();
-          $.ajax({
+        
+      $.ajax({
         type: 'GET',
         url: '/users/',
         data: { keyword: input },
@@ -44,6 +45,8 @@ $(function() {
             if(users.length !== 0){
               users.forEach(function(user){
                 appendList(user);
+                var html = searchUser(user);
+                $('#user-search-result').append(html)
               })
             }
             else{
