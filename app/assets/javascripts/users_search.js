@@ -15,10 +15,10 @@ $(function() {
     }
     function appendList(user){
       var html =`
-  <div class="cchat-group-form__field clearfix">
-    <p class="chat-group-user__name">${user.name}</p>
-    <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</a>
-  </div>
+       <div class="chat-group-form__field.clearfix'>
+        <p class="chat-group-user__name">${user.name}</p>
+        <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</a>
+        </div>
       `
       user_list.append(html);
     }
@@ -31,8 +31,8 @@ $(function() {
       user_list.append(html);
   }
 
-    $(".chat-group-form__search.clearfix").on("keyup", function() {
-      var input = $("#user-search-field.chat-group-form__input").val();
+    $(".chat-group-form__input").on("keyup", function() {
+      var input = $("#user-search-field").val();
          
       $.ajax({
         type: 'GET',
