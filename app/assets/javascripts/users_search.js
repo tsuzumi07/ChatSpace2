@@ -41,29 +41,20 @@ $(function() {
         dataType: 'json'
       })
         
-       .done(function(users){
+      .done(function(users){
             $("#user-search-result").empty();
             if(input.length !== 0){
               users.forEach(function(user){
                 appendList(user);
               })
             }
-         else if (input.length !== 0){     // 値が等しくないもしくは型が等しくなければtrueを返す。
-                $('#user-search-result').empty();
-                users.forEach(function(user){ // users情報をひとつずつとりだしてuserに代入
-                    appendUser(user)
-                });
+            else{
+              appendNoList("一致するユーザーが見つかりません");
             }
-
-            else {
-                $('#user-search-result').empty(); // ユーザーが見つからなければ「見つからない」を返す。
-                appendNoList("一致するユーザーが見つかりません");
-            }
-        })
-
-        .fail(function() {
-            alert('ユーザー検索に失敗しました');
-        });
+          })
+          .fail(function(){
+      alert('検索に失敗しました');
+          })
     });
   $(function(){
     $('#user-search-result').on('click','.chat-group-user__btn--add',function(){
