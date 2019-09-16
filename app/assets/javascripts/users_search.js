@@ -15,10 +15,10 @@ $(function() {
     }
     function appendList(user){
       var html =`
-       <div class="chat-group-form__field.clearfix'>
-        <p class="chat-group-user__name">${user.name}</p>
-        <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</a>
-        </div>
+  <div class="chat-group-form__field.clearfix">
+    <p class="chat-group-user__name">${user.name}</p>
+    <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</a>
+  </div>
       `
       user_list.append(html);
     }
@@ -40,20 +40,30 @@ $(function() {
         data: { keyword: input },
         dataType: 'json'
       })
-          .done(function(users){
+        
+       .done(function(users){
             $("#user-search-result").empty();
             if(input.length !== 0){
               users.forEach(function(user){
                 appendList(user);
               })
             }
-            else{
-              appendNoList("一致するユーザーが見つかりません");
+         else if (input.length !== 0){     // 値が等しくないもしくは型が等しくなければtrueを返す。
+                $('#user-search-result').empty();
+                users.forEach(function(user){ // users情報をひとつずつとりだしてuserに代入
+                    appendUser(user)
+                });
             }
-          })
-          .fail(function(){
-      alert('検索に失敗しました');
-          })
+
+            else {
+                $('#user-search-result').empty(); // ユーザーが見つからなければ「見つからない」を返す。
+                appendNoList("一致するユーザーが見つかりません");
+            }
+        })
+
+        .fail(function() {
+            alert('ユーザー検索に失敗しました');
+        });
     });
   $(function(){
     $('#user-search-result').on('click','.chat-group-user__btn--add',function(){
